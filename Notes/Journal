@@ -1,0 +1,12 @@
+Set up Spring boot Project
+
+SpringBootApplication code comes by default
+
+Defined a RestController(Annotation) class 
+which has GetMapping(Annotation) with a path
+There is another annotation RequestParam which can take value from
+params in uri path.
+
+When returning a response with class, 
+spring boot automatically has Jackson2(package) on class path
+which convertrs class to JSON
