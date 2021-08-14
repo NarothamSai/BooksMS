@@ -1,0 +1,8 @@
+sudo apt-get install postgresql-12 -y
+
+sudo systemctl start postgresql@12-main
+sudo systemctl status postgresql@12-main
+
+sudo -su postgres createuser -s $(whoami)
+
+5642

@@ -1,0 +1,23 @@
+Books API
+
+/books
+POST /
+call to the following API
+curl --location --request GET 'https://fakerapi.it/api/v1/books?_quantity=1'
+Store above call response of book in dB
+
+GET /
+Get All books
+
+GET /<id>
+Get a book with id
+
+PUT /<id>
+Update a book with id
+
+PATCH /<id>
+Update some fields of a book with id
+
+DELETE /<id>
+Delete a book with id
+

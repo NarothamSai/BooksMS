@@ -1,0 +1,13 @@
+Generated Project from Spring Initializer(start.spring.io)
+
+Added dependencies Spring Data JPA, Flyway Migration, Spring Boot DevTools
+
+Edit Artifact to books
+
+Kept remaining settings as same
+
+Project: Maven Project
+Language: Java
+Spring Boot: 2.5.3
+Packaging: Jar
+Java:11
