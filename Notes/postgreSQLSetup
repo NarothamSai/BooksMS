@@ -1,3 +1,4 @@
+Ubuntu:
 sudo apt-get install postgresql-12 -y
 
 sudo systemctl start postgresql@12-main
