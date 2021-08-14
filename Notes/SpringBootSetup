@@ -1,6 +1,6 @@
 Generated Project from Spring Initializer(start.spring.io)
 
-Added dependencies Spring Data JPA, Flyway Migration, Spring Boot DevTools
+Added dependencies Spring Data JPA, Spring Web, Flyway Migration, Spring Boot DevTools
 
 Edit Artifact to books
 
