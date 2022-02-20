@@ -28,4 +28,8 @@ public class BaseModel {
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date deletedAt;
 }
