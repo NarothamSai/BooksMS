@@ -27,6 +27,4 @@ public class Book extends BaseModel{
     private Date published;
     private String image;
     private String isbn;
-
-
 }

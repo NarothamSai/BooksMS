@@ -54,21 +54,21 @@ public class FakerAPIImplementation {
         book.setIsbn(fBook.getIsbn());
         book.setPublished(fBook.getPublished());
         book.setTitle(fBook.getTitle());
-//        Publisher publisher =  new Publisher();
-//        publisher.setName(fBook.getPublisher());
-//        book.setPublisher(publisher);
-//
-//        List<Genre> genres = new ArrayList<>();
-//        Genre genre = new Genre();
-//        genre.setName(fBook.getGenre());
-//        genres.add(genre);
-//        book.setGenre(genres);
-//
-//        List<Author> authors = new ArrayList<>();
-//        Author author = new Author();
-//        author.setName(fBook.getAuthor());
-//        authors.add(author);
-//        book.setAuthor(authors);
+        Publisher publisher =  new Publisher();
+        publisher.setName(fBook.getPublisher());
+        book.setPublisher(publisher);
+
+        List<Genre> genres = new ArrayList<>();
+        Genre genre = new Genre();
+        genre.setName(fBook.getGenre());
+        genres.add(genre);
+        book.setGenre(genres);
+
+        List<Author> authors = new ArrayList<>();
+        Author author = new Author();
+        author.setName(fBook.getAuthor());
+        authors.add(author);
+        book.setAuthor(authors);
 
         System.out.println(book.getClass());
 
