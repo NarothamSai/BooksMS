@@ -61,4 +61,8 @@ public class BooksService {
 
        return createdBook;
     }
+
+    public Optional<Book> findById(Long BookId){
+        return this.booksRepository.findById(BookId);
+    }
 }
