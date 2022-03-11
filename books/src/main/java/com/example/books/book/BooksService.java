@@ -2,7 +2,7 @@ package com.example.books.book;
 
 import com.example.books.author.AuthorService;
 import com.example.books.book.dto.BookResponse;
-import com.example.books.book.createBook.FakerAPIImplementation;
+import com.example.books.book.create_book.FakerAPIImplementation;
 import com.example.books.genre.GenreService;
 import com.example.books.publisher.PublisherService;
 import com.example.books.models.Author;
@@ -63,7 +63,7 @@ public class BooksService {
         Optional<Book> book = this.booksRepository.findById(BookId);
         BookResponse bookResponse = new BookResponse();
 
-        if(book.isEmpty() == true){
+        if(book.isEmpty()){
             bookResponse.setMessage("Book Not found.");
             bookResponse.setStatus(404);
         }else {
