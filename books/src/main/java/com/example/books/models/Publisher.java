@@ -12,6 +12,5 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "publishers")
 public class Publisher extends BaseModel{
-    @Column(unique = true)
     private String name;
 }
