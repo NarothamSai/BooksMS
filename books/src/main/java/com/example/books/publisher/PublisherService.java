@@ -1,4 +1,4 @@
-package com.example.books.Publisher;
+package com.example.books.publisher;
 
 import com.example.books.models.Publisher;
 import lombok.Getter;

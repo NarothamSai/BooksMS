@@ -1,4 +1,4 @@
-package com.example.books.Genre;
+package com.example.books.genre;
 
 import com.example.books.models.Genre;
 import org.springframework.data.jpa.repository.JpaRepository;
