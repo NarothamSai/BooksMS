@@ -1,9 +1,8 @@
-package com.example.books.Genre;
+package com.example.books.genre;
 
 import com.example.books.models.Genre;
 import lombok.Getter;
 import lombok.Setter;
-import org.ietf.jgss.GSSName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

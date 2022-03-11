@@ -1,6 +1,5 @@
-package com.example.books.Book.createBook;
+package com.example.books.book.createBook;
 
-import aj.org.objectweb.asm.TypeReference;
 import com.example.books.models.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -8,15 +7,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.*;
-import java.util.concurrent.CompletionException;
 
 public class FakerAPIImplementation {
     public Book create(){
@@ -38,9 +34,9 @@ public class FakerAPIImplementation {
         }
 
         System.out.println(response.body());
-        fakerAPiBookResponse fakeBook = null;
+        FakerAPiBookResponse fakeBook = null;
         try {
-            fakeBook = new ObjectMapper().readValue(response.body(), fakerAPiBookResponse.class);
+            fakeBook = new ObjectMapper().readValue(response.body(), FakerAPiBookResponse.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -78,7 +74,7 @@ public class FakerAPIImplementation {
 
 @Getter
 @Setter
-class fakerAPiBookResponse {
+class FakerAPiBookResponse {
     private String status;
     private int code;
     private int total;

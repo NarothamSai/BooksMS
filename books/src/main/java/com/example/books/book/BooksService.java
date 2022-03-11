@@ -1,19 +1,15 @@
-package com.example.books.Book;
+package com.example.books.book;
 
-import com.example.books.Author.AuthorService;
-import com.example.books.Book.DTO.BookResponse;
-import com.example.books.Book.createBook.FakerAPIImplementation;
-import com.example.books.Genre.GenreService;
-import com.example.books.Publisher.PublisherService;
+import com.example.books.author.AuthorService;
+import com.example.books.book.dto.BookResponse;
+import com.example.books.book.createBook.FakerAPIImplementation;
+import com.example.books.genre.GenreService;
+import com.example.books.publisher.PublisherService;
 import com.example.books.models.Author;
 import com.example.books.models.Book;
 import com.example.books.models.Genre;
 import com.example.books.models.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

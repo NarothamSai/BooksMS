@@ -1,4 +1,4 @@
-package com.example.books.Book.DTO;
+package com.example.books.book.dto;
 
 import com.example.books.BaseResponse;
 import com.example.books.models.Book;
