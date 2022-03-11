@@ -1,4 +1,4 @@
-package com.example.books.book.createBook;
+package com.example.books.book.create_book;
 
 import com.example.books.models.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;

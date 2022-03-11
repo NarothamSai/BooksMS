@@ -1,7 +1,7 @@
 package com.example.books.book;
 
 import com.example.books.author.AuthorService;
-import com.example.books.book.createBook.FakerAPIImplementation;
+import com.example.books.book.create_book.FakerAPIImplementation;
 import com.example.books.genre.GenreService;
 import com.example.books.publisher.PublisherService;
 import com.example.books.models.Author;
