@@ -8,9 +8,5 @@ public class BooksApplication {
 
   public static void main(String[] args) {
     SpringApplication.run(BooksApplication.class, args);
-
-//    Book test = new BooksService().create();
-//
-//    System.out.println(test);
   }
 }
