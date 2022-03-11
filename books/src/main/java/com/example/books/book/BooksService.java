@@ -1,5 +1,6 @@
 package com.example.books.book;
 
+import com.example.books.BaseResponse;
 import com.example.books.author.AuthorService;
 import com.example.books.book.dto.BookResponse;
 import com.example.books.book.create_book.FakerAPIImplementation;
@@ -73,5 +74,21 @@ public class BooksService {
         }
 
         return bookResponse;
+    }
+
+    public BaseResponse deleteById(Long bookId){
+        BookResponse bookResponse = findById(bookId);
+        BaseResponse baseResponse = new BaseResponse();
+
+        if(bookResponse.getStatus() == 404){
+            baseResponse.setMessage("Book Not Found.");
+            baseResponse.setStatus(404);
+        }else {
+            this.booksRepository.deleteById(bookId);
+            baseResponse.setMessage("Book Deleted.");
+            baseResponse.setStatus(200);
+        }
+
+        return baseResponse;
     }
 }
