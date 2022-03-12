@@ -10,10 +10,3 @@ params in uri path.
 When returning a response with class, 
 spring boot automatically has Jackson2(package) on class path
 which convertrs class to JSON
-
-
-https://www.twilio.com/blog/5-ways-to-make-http-requests-in-java
-String To JSON
-https://www.javatpoint.com/how-to-convert-string-to-json-object-in-java
-
-https://stackoverflow.com/questions/49954812/how-can-you-make-a-created-at-column-generate-the-creation-date-time-automatical
