@@ -2,6 +2,7 @@ package com.example.books.book;
 
 import com.example.books.BaseResponse;
 import com.example.books.author.AuthorService;
+import com.example.books.book.dto.BookListResponse;
 import com.example.books.book.dto.BookResponse;
 import com.example.books.book.create_book.FakerAPIImplementation;
 import com.example.books.genre.GenreService;
@@ -90,5 +91,15 @@ public class BooksService {
         }
 
         return baseResponse;
+    }
+
+    public BookListResponse findAll(){
+        BookListResponse bookListResponse = new BookListResponse();
+
+        bookListResponse.setBooks(this.booksRepository.findAll());
+        bookListResponse.setStatus(200);
+        bookListResponse.setMessage("Books found.");
+
+        return  bookListResponse;
     }
 }

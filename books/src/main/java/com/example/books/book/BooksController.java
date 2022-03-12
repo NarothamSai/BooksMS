@@ -1,6 +1,7 @@
 package com.example.books.book;
 
 import com.example.books.BaseResponse;
+import com.example.books.book.dto.BookListResponse;
 import com.example.books.book.dto.BookResponse;
 import com.example.books.models.Book;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,11 @@ public class BooksController {
     public ResponseEntity<BaseResponse> deleteById(@PathVariable Long id){
         BaseResponse baseResponse = this.booksService.deleteById(id);
         return ResponseEntity.status(baseResponse.getStatus()).body(baseResponse);
+    }
+
+    @GetMapping("/book")
+    public ResponseEntity<BookListResponse> findAll(){
+        BookListResponse bookListResponse = this.booksService.findAll();
+        return ResponseEntity.status(bookListResponse.getStatus()).body(bookListResponse);
     }
 }
