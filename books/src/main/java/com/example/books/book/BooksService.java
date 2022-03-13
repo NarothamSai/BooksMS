@@ -5,6 +5,7 @@ import com.example.books.author.AuthorService;
 import com.example.books.book.dto.BookListResponse;
 import com.example.books.book.dto.BookResponse;
 import com.example.books.book.create_book.FakerAPIImplementation;
+import com.example.books.book.dto.UpdateBookRequestBody;
 import com.example.books.genre.GenreService;
 import com.example.books.publisher.PublisherService;
 import com.example.books.models.Author;
@@ -101,5 +102,32 @@ public class BooksService {
         bookListResponse.setMessage("Books found.");
 
         return  bookListResponse;
+    }
+
+    public BookResponse updateById(Long bookId, UpdateBookRequestBody updateBookRequestBody){
+        BookResponse bookResponse = new BookResponse();
+
+        BookResponse findBookResponse = findById(bookId);
+
+        if(findBookResponse.getStatus() == 404){
+            bookResponse.setStatus(404);
+            bookResponse.setMessage("Book Not Found.");
+        }else{
+            Book book = findBookResponse.getBook();
+            if(updateBookRequestBody.getDescription() != null) book.setDescription(updateBookRequestBody.getDescription());
+            if(updateBookRequestBody.getImage() != null) book.setImage(updateBookRequestBody.getImage());
+            if(updateBookRequestBody.getIsbn() != null) book.setIsbn(updateBookRequestBody.getIsbn());
+            if(updateBookRequestBody.getPublished() != null) book.setPublished(updateBookRequestBody.getPublished());
+            if(updateBookRequestBody.getTitle() != null) book.setTitle(updateBookRequestBody.getTitle());
+
+            Book savedBook = this.booksRepository.save(book);
+            bookResponse.setStatus(204);
+            bookResponse.setMessage("Book updated.");
+            bookResponse.setBook(savedBook);
+        }
+
+
+
+        return bookResponse;
     }
 }

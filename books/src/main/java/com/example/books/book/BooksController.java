@@ -3,6 +3,7 @@ package com.example.books.book;
 import com.example.books.BaseResponse;
 import com.example.books.book.dto.BookListResponse;
 import com.example.books.book.dto.BookResponse;
+import com.example.books.book.dto.UpdateBookRequestBody;
 import com.example.books.models.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,5 +35,11 @@ public class BooksController {
     public ResponseEntity<BookListResponse> findAll(){
         BookListResponse bookListResponse = this.booksService.findAll();
         return ResponseEntity.status(bookListResponse.getStatus()).body(bookListResponse);
+    }
+
+    @PatchMapping("/book/{id}")
+    public ResponseEntity<BookResponse> updateById(@PathVariable Long id, @RequestBody UpdateBookRequestBody updateBookRequestBody){
+        BookResponse bookResponse = this.booksService.updateById(id,updateBookRequestBody);
+        return ResponseEntity.status(bookResponse.getStatus()).body(bookResponse);
     }
 }

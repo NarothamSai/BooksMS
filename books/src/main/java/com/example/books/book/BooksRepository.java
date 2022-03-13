@@ -24,4 +24,6 @@ public interface BooksRepository extends JpaRepository<Book,Long> {
 
     @Override
     <S extends Book> Page<S> findAll(Example<S> example, Pageable pageable);
+
+
 }
