@@ -25,4 +25,23 @@ public class AuthorService {
 
         return author;
     }
+
+    public Author upsert(String name){
+        Author author =  this.authorRepository.findByName(name);
+
+        if(author == null){
+            Author newAuthor = new Author();
+            newAuthor.setName(name);
+            author = this.authorRepository.save(newAuthor);
+        }
+
+
+        return author;
+    }
+
+    public Author findByName(String name){
+        Author author =  this.authorRepository.findByName(name);
+
+        return author;
+    }
 }

@@ -126,7 +126,67 @@ public class BooksService {
             bookResponse.setBook(savedBook);
         }
 
+        return bookResponse;
+    }
 
+    public BookResponse addAuthorById(Long bookId, String authorName){
+        BookResponse bookResponse = new BookResponse();
+
+        BookResponse findBookResponse = findById(bookId);
+
+        if(findBookResponse.getStatus() == 404){
+            bookResponse.setStatus(404);
+            bookResponse.setMessage("Book Not Found.");
+        }else{
+            Book book = findBookResponse.getBook();
+
+            Author author = this.authorService.upsert(authorName);
+
+            List<Author> authors = book.getAuthor();
+            authors.add(author);
+
+            book.setAuthor(authors);
+
+            Book savedBook = this.booksRepository.save(book);
+
+            bookResponse.setStatus(204);
+            bookResponse.setMessage("Book updated.");
+            bookResponse.setBook(savedBook);
+        }
+
+        return bookResponse;
+    }
+
+    public BookResponse deleteAuthorById(Long bookId, String authorName){
+        BookResponse bookResponse = new BookResponse();
+
+        BookResponse findBookResponse = findById(bookId);
+
+        if(findBookResponse.getStatus() == 404){
+            bookResponse.setStatus(404);
+            bookResponse.setMessage("Book Not Found.");
+        }else{
+            Book book = findBookResponse.getBook();
+
+            Author author = this.authorService.findByName(authorName);
+
+            if(author == null){
+                bookResponse.setStatus(404);
+                bookResponse.setMessage("Author Not Found.");
+            }else{
+                List<Author> authors = book.getAuthor();
+                authors.remove(author);
+
+                book.setAuthor(authors);
+
+                Book savedBook = this.booksRepository.save(book);
+
+                bookResponse.setStatus(204);
+                bookResponse.setMessage("Book updated.");
+                bookResponse.setBook(savedBook);
+            }
+
+        }
 
         return bookResponse;
     }

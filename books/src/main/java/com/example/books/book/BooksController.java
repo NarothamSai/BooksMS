@@ -1,6 +1,7 @@
 package com.example.books.book;
 
 import com.example.books.BaseResponse;
+import com.example.books.book.dto.AuthorRequestBody;
 import com.example.books.book.dto.BookListResponse;
 import com.example.books.book.dto.BookResponse;
 import com.example.books.book.dto.UpdateBookRequestBody;
@@ -40,6 +41,18 @@ public class BooksController {
     @PatchMapping("/book/{id}")
     public ResponseEntity<BookResponse> updateById(@PathVariable Long id, @RequestBody UpdateBookRequestBody updateBookRequestBody){
         BookResponse bookResponse = this.booksService.updateById(id,updateBookRequestBody);
+        return ResponseEntity.status(bookResponse.getStatus()).body(bookResponse);
+    }
+
+    @PatchMapping("/book/{id}/author")
+    public ResponseEntity<BookResponse> addAuthorById(@PathVariable Long id, @RequestBody AuthorRequestBody authorRequestBody){
+        BookResponse bookResponse = this.booksService.addAuthorById(id, authorRequestBody.getName());
+        return ResponseEntity.status(bookResponse.getStatus()).body(bookResponse);
+    }
+
+    @DeleteMapping("/book/{id}/author")
+    public ResponseEntity<BookResponse> deleteAuthorById(@PathVariable Long id, @RequestBody AuthorRequestBody authorRequestBody){
+        BookResponse bookResponse = this.booksService.deleteAuthorById(id, authorRequestBody.getName());
         return ResponseEntity.status(bookResponse.getStatus()).body(bookResponse);
     }
 }
