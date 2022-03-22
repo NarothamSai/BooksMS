@@ -1,5 +1,6 @@
 package com.example.books.genre;
 
+import com.example.books.models.Author;
 import com.example.books.models.Genre;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +23,24 @@ public class GenreService {
             newGenre.setName(name);
             genre = this.genreRepository.save(newGenre);
         }
+
+        return genre;
+    }
+
+    public Genre upsert(String name){
+        Genre genre = this.genreRepository.findByName(name);
+
+        if(genre == null){
+            Genre newGenre = new Genre();
+            newGenre.setName(name);
+            genre = this.genreRepository.save(newGenre);
+        }
+
+        return genre;
+    }
+
+    public Genre findByName(String name){
+        Genre genre = this.genreRepository.findByName(name);
 
         return genre;
     }

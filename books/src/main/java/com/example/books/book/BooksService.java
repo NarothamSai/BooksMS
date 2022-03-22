@@ -190,4 +190,81 @@ public class BooksService {
 
         return bookResponse;
     }
+
+    public BookResponse addGenreById(Long bookId, String genreName){
+        BookResponse bookResponse = new BookResponse();
+
+        BookResponse findBookResponse = findById(bookId);
+
+        if(findBookResponse.getStatus() == 404){
+            bookResponse.setStatus(404);
+            bookResponse.setMessage("Book Not Found.");
+        }else{
+            Book book = findBookResponse.getBook();
+
+            Genre genre = this.genreService.upsert(genreName);
+
+            List<Genre> genres = book.getGenre();
+            if(genres.contains(genre) == true){
+                bookResponse.setStatus(409);
+                bookResponse.setMessage("Genre already exists for the book.");
+                bookResponse.setBook(book);
+            }else{
+                genres.add(genre);
+
+                book.setGenre(genres);
+
+                Book savedBook = this.booksRepository.save(book);
+
+                bookResponse.setStatus(204);
+                bookResponse.setMessage("Book updated.");
+                bookResponse.setBook(savedBook);
+            }
+
+        }
+
+        return bookResponse;
+    }
+
+    public BookResponse deleteGenreById(Long bookId, String genreName){
+        BookResponse bookResponse = new BookResponse();
+
+        BookResponse findBookResponse = findById(bookId);
+
+        if(findBookResponse.getStatus() == 404){
+            bookResponse.setStatus(404);
+            bookResponse.setMessage("Book Not Found.");
+        }else{
+            Book book = findBookResponse.getBook();
+
+            Genre genre = this.genreService.findByName(genreName);
+
+            if(genre == null){
+                bookResponse.setStatus(404);
+                bookResponse.setMessage("Genre Not Found.");
+            }else{
+                List<Genre> genres = book.getGenre();
+
+                if(genres.contains(genre) == true){
+                    genres.remove(genre);
+
+                    book.setGenre(genres);
+
+                    Book savedBook = this.booksRepository.save(book);
+
+                    bookResponse.setStatus(204);
+                    bookResponse.setMessage("Book updated.");
+                    bookResponse.setBook(savedBook);
+                }else{
+                    bookResponse.setStatus(409);
+                    bookResponse.setMessage("Genre does not exists in book.");
+                    bookResponse.setBook(book);
+                }
+
+            }
+
+        }
+
+        return bookResponse;
+    }
 }

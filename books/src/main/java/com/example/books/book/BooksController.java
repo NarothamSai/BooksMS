@@ -1,10 +1,7 @@
 package com.example.books.book;
 
 import com.example.books.BaseResponse;
-import com.example.books.book.dto.AuthorRequestBody;
-import com.example.books.book.dto.BookListResponse;
-import com.example.books.book.dto.BookResponse;
-import com.example.books.book.dto.UpdateBookRequestBody;
+import com.example.books.book.dto.*;
 import com.example.books.models.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -53,6 +50,18 @@ public class BooksController {
     @DeleteMapping("/book/{id}/author")
     public ResponseEntity<BookResponse> deleteAuthorById(@PathVariable Long id, @RequestBody AuthorRequestBody authorRequestBody){
         BookResponse bookResponse = this.booksService.deleteAuthorById(id, authorRequestBody.getName());
+        return ResponseEntity.status(bookResponse.getStatus()).body(bookResponse);
+    }
+
+    @PostMapping ("/book/{id}/genre")
+    public ResponseEntity<BookResponse> addGenreById(@PathVariable Long id, @RequestBody GenreRequestBody genreRequestBody){
+        BookResponse bookResponse = this.booksService.addGenreById(id, genreRequestBody.getName());
+        return ResponseEntity.status(bookResponse.getStatus()).body(bookResponse);
+    }
+
+    @DeleteMapping ("/book/{id}/genre")
+    public ResponseEntity<BookResponse> deleteGenreById(@PathVariable Long id, @RequestBody GenreRequestBody genreRequestBody){
+        BookResponse bookResponse = this.booksService.deleteGenreById(id, genreRequestBody.getName());
         return ResponseEntity.status(bookResponse.getStatus()).body(bookResponse);
     }
 }
