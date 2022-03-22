@@ -64,4 +64,10 @@ public class BooksController {
         BookResponse bookResponse = this.booksService.deleteGenreById(id, genreRequestBody.getName());
         return ResponseEntity.status(bookResponse.getStatus()).body(bookResponse);
     }
+
+    @PatchMapping("/book/{id}/publisher")
+    public ResponseEntity<BookResponse> updatePublisherById(@PathVariable Long id, @RequestBody PublisherRequestBody publisherRequestBody){
+        BookResponse bookResponse = this.booksService.updateBookPublisherById(id, publisherRequestBody.getName());
+        return ResponseEntity.status(bookResponse.getStatus()).body(bookResponse);
+    }
 }

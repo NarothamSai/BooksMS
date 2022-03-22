@@ -23,4 +23,21 @@ public class PublisherService {
         }
         return  publisher;
     }
+
+    public Publisher upsert(String name){
+        Publisher publisher = publisherRepository.findByName(name);
+        if(publisher == null){
+            Publisher newPublisher = new Publisher();
+            newPublisher.setName(name);
+
+            publisher = this.publisherRepository.save(newPublisher);
+        }
+        return  publisher;
+    }
+
+    public Publisher findByName(String name){
+        Publisher publisher = publisherRepository.findByName(name);
+
+        return  publisher;
+    }
 }

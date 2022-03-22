@@ -267,4 +267,26 @@ public class BooksService {
 
         return bookResponse;
     }
+
+    public BookResponse updateBookPublisherById(Long bookId, String publisherName){
+        BookResponse bookResponse = new BookResponse();
+
+        BookResponse findBookResponse = findById(bookId);
+
+        if(findBookResponse.getStatus() == 404){
+            bookResponse.setStatus(404);
+            bookResponse.setMessage("Book Not Found.");
+        }else{
+            Book book = findBookResponse.getBook();
+
+            book.setPublisher(this.publisherService.upsert(publisherName));
+
+            this.booksRepository.save(book);
+
+            bookResponse.setStatus(204);
+            bookResponse.setMessage("Book updated.");
+        }
+
+        return bookResponse;
+    }
 }
